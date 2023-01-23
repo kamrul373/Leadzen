@@ -9,13 +9,14 @@ const AllUsers = () => {
             .then(users => setUsers(users))
     }, [])
     return (
-        <div className='flex flex-col gap-4 mt-8'>
+        <div className='flex flex-col  gap-8 mt-8'>
             {
                 users.map(user => <UserCard
                     key={user.id}
                     user={user}
                 ></UserCard>)
             }
+
         </div>
     );
 };

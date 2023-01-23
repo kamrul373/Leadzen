@@ -1,29 +1,33 @@
 import React from 'react';
-import { Disclosure } from '@headlessui/react'
-import { ChevronUpIcon } from '@heroicons/react/20/solid'
 import Details from './Details';
 const UserCard = ({ user }) => {
     return (
-        <div className='card'>
-            <div className="w-full px-12">
-                <div className=" w-full rounded-2xl bg-white p-2">
-                    <Disclosure>
-                        {({ open }) => (
-                            <>
-                                <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                                    <span>View Details</span>
-                                    <ChevronUpIcon
-                                        className={`${open ? 'rotate-180 transform' : ''
-                                            } h-5 w-5 text-purple-500`}
-                                    />
-                                </Disclosure.Button>
-                                <Details></Details>
-                            </>
-                        )}
-                    </Disclosure>
-
-                </div>
+        <div className='card shadow-lg rounded-xl bg-white p-12 w-[90%] mx-auto grid grid-cols-5 justify-center items-center'>
+            <div>{user?.company?.name}</div>
+            <div>
+                <p>
+                    <strong>Contact</strong>
+                </p>
+                {user?.name}
             </div>
+            <div>
+                <p>
+                    <strong>City</strong>
+                </p>
+                {user?.address?.city}
+            </div>
+            <div>
+                <p>
+                    <strong>Phone</strong>
+                </p>
+                {user?.phone}
+            </div>
+            <div>
+                <button className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse-${user?.id}`} aria-expanded="false" aria-controls={`collapse-${user?.id}`}>
+                    View Details
+                </button>
+            </div>
+            <Details user={user}></Details>
         </div>
     );
 };
