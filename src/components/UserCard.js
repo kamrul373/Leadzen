@@ -30,6 +30,7 @@ const UserCard = ({ user }) => {
                 </div>
             </div>
             <div className='w-[90%] mx-auto'>
+                {/* details */}
                 <Details user={user}></Details>
             </div>
         </div>

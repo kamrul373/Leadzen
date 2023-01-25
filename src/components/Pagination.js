@@ -3,13 +3,12 @@ import React, { useEffect, useState } from 'react';
 const Pagination = ({ users, handlePagination, currentPage }) => {
     const [pages, setPages] = useState([])
     const limit = 3;
+    // pagination
     useEffect(() => {
         const usersLength = users.length;
         const numberOfpages = Math.ceil(usersLength / limit)
         setPages(numberOfpages)
     }, [users])
-
-
 
     return (
         <div className="flex justify-center py-5 my-6">

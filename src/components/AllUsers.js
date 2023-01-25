@@ -4,10 +4,12 @@ import Pagination from './Pagination';
 import UserCard from './UserCard';
 
 const AllUsers = () => {
+    // state declaration
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(0)
     const [tempUsers, setTempUsers] = useState([])
+    // fetching users
     useEffect(() => {
         setLoading(true)
         fetch("https://jsonplaceholder.typicode.com/users")
@@ -18,13 +20,13 @@ const AllUsers = () => {
                 setLoading(false)
             })
     }, [])
-
+    // pagination
     const handlePagination = (page, limit, e) => {
         e.preventDefault()
         setCurrentPage(page)
         setTempUsers(users.slice(page * limit, (limit * (page + 1))))
     }
-
+    // loading
     if (loading) {
         return <Loader></Loader>
     }
